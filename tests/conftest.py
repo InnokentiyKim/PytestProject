@@ -1,9 +1,19 @@
 import pytest
-import requests
-from conf import SERVICE_URL_2
+import random
+
+
+def _calculate(a, b):
+    return a + b
 
 
 @pytest.fixture
-def get_users():
-    response = requests.get(SERVICE_URL_2)
-    return response
+def calculate():
+    return _calculate
+
+@pytest.fixture
+def get_some_number():
+    print('Setup process...')
+    yield random.randrange(1, 1000, 5)
+    print('Tear down process...')
+
+
