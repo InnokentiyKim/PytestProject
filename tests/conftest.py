@@ -10,6 +10,7 @@ def _calculate(a, b):
 def calculate():
     return _calculate
 
+
 @pytest.fixture
 def get_some_number():
     print('Setup process...')
