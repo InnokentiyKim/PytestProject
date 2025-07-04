@@ -2,7 +2,7 @@ import requests
 import pytest
 from conf import SERVICE_URL_1
 from src.baseclasses.response import AssertResponse
-from src.enums.global_enums import GlobalErrorMessage
+from tests.conftest import calculate
 from src.pydantic_schemas.post import PostSchema
 
 
@@ -14,6 +14,22 @@ def test_equal():
 @pytest.mark.skipif("1 == 0")
 def test_is_not_equal():
     assert 1 != 2, "one is not equal to two"
+
+
+@pytest.mark.production
+@pytest.mark.development
+@pytest.mark.parametrize(
+    'first_val, second_val, expected',
+    [
+        (1, 2, 3),
+        (-1, 0, -1),
+        (0, 0, 0),
+        (-2, 2, 0),
+        (-1, -2, -3)
+    ]
+)
+def test_calculate(first_val, second_val, expected, calculate):
+    assert calculate(first_val, second_val) == expected
 
 
 def test_getting_posts():
