@@ -37,3 +37,14 @@ def test_getting_posts():
     resp_assert = AssertResponse(response)
     resp_assert.assert_status_code(200).validate(PostSchema)
     resp_assert.validate(PostSchema)
+
+
+pytest.mark.parametrize(
+    "status", [
+        "Active",
+        "Inactive",
+        "Banned"
+    ]
+)
+def test_smth(get_player_generator):
+    print(get_player_generator.build())
