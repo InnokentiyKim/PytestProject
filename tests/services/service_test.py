@@ -39,12 +39,12 @@ def test_getting_posts():
     resp_assert.validate(PostSchema)
 
 
-pytest.mark.parametrize(
+@pytest.mark.parametrize(
     "status", [
         "Active",
         "Inactive",
         "Banned"
     ]
 )
-def test_smth(get_player_generator):
-    print(get_player_generator.build())
+def test_smth(status, get_player_generator):
+    print(get_player_generator.set_status(status).build())
