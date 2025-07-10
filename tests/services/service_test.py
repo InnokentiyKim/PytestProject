@@ -4,6 +4,7 @@ from conf import SERVICE_URL_1
 from src.baseclasses.response import AssertResponse
 from tests.conftest import calculate
 from src.pydantic_schemas.post import PostSchema
+from src.enums.user_enums import Status
 
 
 @pytest.mark.skip(reason="Issue-1234")
@@ -41,9 +42,7 @@ def test_getting_posts():
 
 @pytest.mark.parametrize(
     "status", [
-        "Active",
-        "Inactive",
-        "Banned"
+        *Status.list()
     ]
 )
 def test_smth(status, get_player_generator):

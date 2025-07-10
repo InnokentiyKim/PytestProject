@@ -1,4 +1,5 @@
 from enum import Enum
+from src.baseclasses.enum_base import EnumBase
 
 
 class Gender(Enum):
@@ -6,7 +7,7 @@ class Gender(Enum):
     male = "male"
 
 
-class Status(Enum):
+class Status(EnumBase):
     active = "active"
     inactive = "inactive"
     unknown = "unknown"
